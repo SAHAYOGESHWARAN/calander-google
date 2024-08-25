@@ -1,18 +1,18 @@
-
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './components/Login';
-import Calendar from './components/Calendar';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Login from './auth/Login';
+import AddEvent from './events/AddEvent';
 
-function App() {
-    return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/calendar" element={<Calendar />} />
-            </Routes>
-        </Router>
-    );
-}
+const App = () => (
+    <Router>
+        <div className="container">
+            <Switch>
+                <Route path="/login" component={Login} />
+                <Route path="/add-event" component={AddEvent} />
+            </Switch>
+        </div>
+    </Router>
+);
 
-export default App;
+ReactDOM.render(<App />, document.getElementById('root'));
